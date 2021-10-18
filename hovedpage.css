@@ -1,0 +1,7 @@
+body{
+    background-color: green;
+}
+
+input[type='radio'] { 
+    transform: scale(2); 
+}

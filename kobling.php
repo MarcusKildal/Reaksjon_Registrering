@@ -30,6 +30,6 @@ $tjener = "localhost";
     }
 
 
-    header("Location: rom.php");
+    header("Location: hovedpage.php");
 
 ?>
