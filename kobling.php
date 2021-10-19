@@ -20,16 +20,18 @@ $tjener = "localhost";
 
     $knappnavn = $_GET["knappnavn"];
 
+    date_default_timezone_set("Europe/Oslo");
+    $når_knappen_ble_trykket = date("Y-m-d h:i:s");
 
-    $sql = "INSERT INTO `knapper` (`knappnavn`) VALUES ('$knappnavn')";
+
+
+    $sql = "INSERT INTO `knapper` (`knappnavn`,`Tid`) VALUES ('$knappnavn', '$når_knappen_ble_trykket')";
 
     if($kobling->query($sql)) {
         echo "Spørringen $sql ble gjennomført.";
     } else {
         echo "Noe gikk galt med spøfrringen $sql ($kobling->error).";
     }
-
-
     header("Location: hovedpage.php");
 
 ?>
