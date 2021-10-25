@@ -20,12 +20,15 @@ $tjener = "localhost";
 
     $knappnavn = $_GET["knappnavn"];
 
+    $rom = $_GET["idrom"];
+
+
     date_default_timezone_set("Europe/Oslo");
     $når_knappen_ble_trykket = date("Y-m-d h:i:s");
 
 
 
-    $sql = "INSERT INTO `knapper` (`knappnavn`,`Tid`) VALUES ('$knappnavn', '$når_knappen_ble_trykket')";
+    $sql = "INSERT INTO `Reaksjoner` (`knappnavn`,`Tid`,`rom_idrom`) VALUES ('$knappnavn', '$når_knappen_ble_trykket', '$rom')";
 
     if($kobling->query($sql)) {
         echo "Spørringen $sql ble gjennomført.";
