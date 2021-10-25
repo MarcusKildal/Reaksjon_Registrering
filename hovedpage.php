@@ -21,40 +21,51 @@
     <input type="radio" name="knappnavn" value ="Liker ikke">
      Hater det 
     <input type="radio" name="knappnavn" value ="Hater det">
+    <select name= "idrom">
+    <?php
+                    $tjener = "localhost";
+                    $brukernavn = "root";
+                    $passord = "root";
+                    $database = "intilitypros"; //Endre på denne til din database
+
+                    // Opprette en kobling
+                    $kobling = new mysqli($tjener, $brukernavn, $passord, $database);
+
+                    // Sjekk om koblingen virker
+                    if($kobling->connect_error) {
+                        die("Noe gikk galt: " . $kobling->connect_error);
+                    } else {
+                        echo "<br>";
+                    }
+
+                    // Angi UTF-8 som tegnsett
+                    $kobling->set_charset("utf8");
+                    // Med linjeskift for 1 tabell    
+                    $sql = "SELECT * FROM rom"; //Skriv din sql kode her
+                    $resultat = $kobling->query($sql);
+    
+                    while($rad = $resultat->fetch_assoc()) {
+                        $navn = $rad["navn"]; //Skriv ditt kolonnenavn her
+                        $idrom = $rad["idrom"];
+    
+                        echo "<option value='$idrom'> $navn</option>";
+                    }
+    ?>
+    </select>
     <input type="submit" value="Send">
+
 </form>
 <?php
 
-    $tjener = "localhost";
-    $brukernavn = "root";
-    $passord = "root";
-    $database = "intilitypros"; //Endre på denne til din database
-
-    // Opprette en kobling
-    $kobling = new mysqli($tjener, $brukernavn, $passord, $database);
-
-    // Sjekk om koblingen virker
-    if($kobling->connect_error) {
-        die("Noe gikk galt: " . $kobling->connect_error);
-    } else {
-        echo "<br>";
-    }
-
-    // Angi UTF-8 som tegnsett
-    $kobling->set_charset("utf8");
-
-
-
-
 // Med linjeskift for 1 tabell
-$sql = "SELECT * FROM knapper"; //Skriv din sql kode her
+$sql = "SELECT * FROM Reaksjoner"; //Skriv din sql kode her
 $resultat = $kobling->query($sql);
 
 while($rad = $resultat->fetch_assoc()) {
     $tid = $rad["Tid"]; //Skriv ditt kolonnenavn her
     $navn = $rad["knappnavn"]; //Skriv ditt kolonnenavn her
 
-    echo "  ($navn) har blit tykket (antall) å ble  sist  klokken ($tid) av (navn)  <br>";
+    echo "($navn) ble trykket, klokken ($tid) av (navn)  <br>";
 }
 ?>
 </body>
