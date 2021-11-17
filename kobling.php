@@ -1,6 +1,5 @@
 <?php
-
-$tjener = "localhost";
+    $tjener = "localhost";
     $brukernavn = "root";
     $passord = "root";
     $database = "intilitypros"; //Endre på denne til din database
@@ -39,8 +38,7 @@ $tjener = "localhost";
     }
 
 
-   
-
+    
     $navn = $_GET["navn"];
     $titel = $_GET["titel"];
     $sporsmaal = $_GET["sporsmaal"];

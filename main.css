@@ -1,0 +1,29 @@
+body{
+    height: 100vh;
+    background-image: linear-gradient(pink, violet);
+}
+hr{
+    background-color: black;
+    height: 1px;
+}
+.Legg_Til_Rom {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.titel {
+    text-align: center;
+}
+.for_å_legge_ved_siden_av_form {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Logg {
+    display:flex;
+    flex-direction: row;
+    justify-content: right;
+    border: 2px solid black;
+}
+
+
