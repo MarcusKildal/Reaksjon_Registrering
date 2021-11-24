@@ -43,7 +43,7 @@
     $titel = $_GET["titel"];
     $sporsmaal = $_GET["sporsmaal"];
 
-
+    //putter bare information du skrev inn i databasen 
     if(isset($navn)){
         $sql = "INSERT INTO `rom` (`navn`,`titel`,`sporsmaal`) VALUES ('$navn', '$titel', '$sporsmaal')";
 
@@ -54,6 +54,6 @@
         }
     
     }
-
+    // i urlen vil den skrive idrom= så ser du i fromen hvor det står <?php echo "$idrom"; å da rkiver den resten eller tallet altså idrom = 1 eller 2 eller 3 ect
     header("Location: hovedpage.php?idrom=$rom");
 ?>

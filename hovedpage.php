@@ -16,7 +16,7 @@
     // Angi UTF-8 som tegnsett
     $kobling->set_charset("utf8");
 
-
+    //hvis ikke satt rom blir du på det romme du har satt id 1
     if (isset($_GET["idrom"])){
         $idrom = $_GET["idrom"];
     } else {
@@ -28,7 +28,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="Main.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,11 +41,13 @@
                 <input type="text" name="titel" placeholder="titel" required>
                 <input type="text" name="sporsmaal" placeholder="spørsmål" required>
                 <button type="submit">leg til rom</button>
+                <!-- sender deg til bake til det romme du var i etter du trykker på submit knappen-->
                 <input type="hidden" name="idrom" value="<?php echo "$idrom";?>">   
             </form>
         </div>
         <div class = "titel">
             <?php 
+            //sender ut beskrivelsen hvis det romme du har valgt å være i er det samme som id 
                 $sql = "SELECT * FROM rom WHERE idrom = $idrom"; //Skriv din sql kode her
                 $resultat = $kobling->query($sql);
 
@@ -66,7 +68,7 @@
                 <form action=""method="get">
                     <select name= "idrom">
                         <?php
-                            // Med linjeskift for 1 tabell    
+                            // gir deg mulighet til å velge rom
                             $sql = "SELECT * FROM rom"; //Skriv din sql kode her
                             $resultat = $kobling->query($sql);
 
@@ -105,12 +107,13 @@
                     Hater det 
                     <br>
                     <input type="submit" value="Send">
+                    <!-- sender deg til bake til det romme du var i -->
                     <input type="hidden" name="idrom" value="<?php echo "$idrom";?>">
                 </form>
             </div>
-
             <div class = "Logg">
                 <?php
+                // sender ut det du inserta i data basen hvis det romme du har valgt å være i er det samme som id
                     $sql = "SELECT * FROM Reaksjoner JOIN rom ON idrom = rom_idrom WHERE idrom = $idrom"; //Skriv din sql kode her
                     $resultat = $kobling->query($sql);
 
